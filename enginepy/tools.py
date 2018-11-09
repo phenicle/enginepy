@@ -436,7 +436,7 @@ if __name__ == '__main__':
     result = Engine('ls -l', Engine.IGNORE, Engine.IGNORE).run()
 
     print "overwrite/ignore ->"
-    result = Engine('ls -l', Engine.OVERWRITE, Engine.IGNORE, stdout_filepath=/tmp/cmd.stdout).run()
+    result = Engine('ls -l', Engine.OVERWRITE, Engine.IGNORE, stdout_filepath='/tmp/cmd.stdout').run()
     print "cmd stdout ->"
     os.system('cat /tmp/cmd.stdout')
     pp.pprint(result)
