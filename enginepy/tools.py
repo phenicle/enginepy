@@ -309,26 +309,26 @@ class Engine(object):
     
     def __init__(self, cmd, stdout_control, stderr_control, **kwargs):
 
-		self.cmd = cmd
-		self.stdout_control = stdout_control
-		self.stderr_control = stderr_control
+        self.cmd = cmd
+        self.stdout_control = stdout_control
+        self.stderr_control = stderr_control
 
-		self.stdout_filepath = None
-		self.stderr_filepath = None
-		if 'stdout_filepath' in kwargs:
-			self.stdout_filepath = kwargs['stdout_filepath']
+        self.stdout_filepath = None
+        self.stderr_filepath = None
+        if 'stdout_filepath' in kwargs:
+        	self.stdout_filepath = kwargs['stdout_filepath']
 
-		if 'stderr_filepath' in kwargs:
-			self.stderr_filepath = kwargs['stderr_filepath']
+        if 'stderr_filepath' in kwargs:
+        	self.stderr_filepath = kwargs['stderr_filepath']
 
 
-		def __repr__(self):
+        def __repr__(self):
 
-			s = '\n'
-			for k in self.__dict__:
-			        s += "%5s%20s: %s\n" % (' ',k, self.__dict__[k])
+        	s = '\n'
+        	for k in self.__dict__:
+        	        s += "%5s%20s: %s\n" % (' ',k, self.__dict__[k])
 
-			return s
+        	return s
 
 
 	def run(self):
