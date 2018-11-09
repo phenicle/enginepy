@@ -333,7 +333,6 @@ class Engine(object):
 
 	def run(self):
 
-        # display, capture
         if self.stdout_control == DISPLAY and self.stderr_control == DISPLAY:
             return run_stdout_display_stderr_display(self.cmd)
 
