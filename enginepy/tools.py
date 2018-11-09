@@ -2,8 +2,9 @@
 
 import subprocess
 import pprint
+import os
 
-DEBUGGING = False
+DEBUGGING = True
 
 UNKNOWN = 0
 DISPLAY = 1
