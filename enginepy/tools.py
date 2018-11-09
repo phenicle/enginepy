@@ -18,13 +18,13 @@ OVERWRITE_FILE = 5
 pp = pprint.PrettyPrinter(indent=4)
 
 def run_stdout_display_stderr_display(cmd):
-	pass
+    pass
 
 def run_stdout_display_stderr_capture(cmd):
-	pass
+    pass
 
 def run_stdout_capture_stderr_display(cmd):
-	pass
+    pass
 
 # result = Engine('ls -l', Engine.CAPTURE, Engine.CAPTURE).run()
 def run_stdout_capture_stderr_capture(cmd):
@@ -58,19 +58,19 @@ def run_stdout_capture_stderr_capture(cmd):
     return { 'code': return_code, 'stdout': stdout, 'stderr': stderr }
 
 def run_stdout_display_stderr_append(cmd, stderr_filepath):
-	pass
+    pass
 
 def run_stdout_append_stderr_display(cmd, stdout_filepath):
-	pass
+    pass
 
 def run_stdout_append_stderr_append(cmd, stdout_filepath, stderr_filepath):
-	pass
+    pass
 
 def run_stdout_display_stderr_overwrite(cmd, stderr_filepath):
-	pass
+    pass
 
 def run_stdout_overwrite_stderr_display(cmd, stdout_filepath):
-	pass
+    pass
 
 # result = Engine('ls -l', Engine.OVERWRITE_FILE, Engine.OVERWRITE_FILE, stdout_filepath='/tmp/cmd.stdout', stderr_filepath='/tmp/cmd.stderr').run()
 def run_stdout_overwrite_stderr_overwrite(cmd, stdout_filepath, stderr_filepath):
@@ -103,13 +103,13 @@ def run_stdout_overwrite_stderr_overwrite(cmd, stdout_filepath, stderr_filepath)
     return { 'code': return_code }
 
 def run_stdout_capture_stderr_append(cmd, stderr_filepath):
-	pass
+    pass
 
 def run_stdout_append_stderr_capture(cmd, stdout_filepath):
-	pass
+    pass
 
 def run_stdout_capture_stderr_overwrite(cmd, stderr_filepath):
-	pass
+    pass
 
 # result = Engine('ls -l', Engine.OVERWRITE_FILE, Engine.CAPTURE, stdout_filepath='/tmp/cmd.stdout').run()
 def run_stdout_overwrite_stderr_capture(cmd, stdout_filepath):
@@ -179,7 +179,7 @@ def run_stdout_display_stderr_ignore(cmd):
 
 
 def run_stdout_ignore_stderr_display(cmd):
-	pass
+    pass
 
 
 # result = Engine('ls -l', Engine.IGNORE, Engine.IGNORE).run()
@@ -213,16 +213,16 @@ def run_stdout_ignore_stderr_ignore(cmd):
     return { 'code': return_code }
 
 def run_stdout_capture_stderr_ignore(cmd):
-	pass
+    pass
 
 def run_stdout_ignore_stderr_capture(cmd):
-	pass
+    pass
 
 def run_stdout_append_stderr_ignore(cmd, stdout_filepath):
-	pass
+    pass
 
 def run_stdout_ignore_stderr_append(cmd, stderr_filepath):
-	pass
+    pass
 
 # result = Engine('ls -l', Engine.OVERWRITE, Engine.IGNORE, stdout_filepath=/tmp/cmd.stdout).run()
 def run_stdout_overwrite_stderr_ignore(cmd, stdout_filepath):
@@ -256,7 +256,7 @@ def run_stdout_overwrite_stderr_ignore(cmd, stdout_filepath):
 
 
 def run_stdout_ignore_stderr_overwrite(cmd, stderr_filepath):
-	pass
+    pass
 
 
 class Engine(object):
@@ -333,84 +333,83 @@ class Engine(object):
 
 	def run(self):
 
-		# display, capture
-		if self.stdout_control == DISPLAY and self.stderr_control == DISPLAY:
-			return run_stdout_display_stderr_display(self.cmd)
+        # display, capture
+        if self.stdout_control == DISPLAY and self.stderr_control == DISPLAY:
+            return run_stdout_display_stderr_display(self.cmd)
 
-		if self.stdout_control == DISPLAY and self.stderr_control == CAPTURE:
-			return run_stdout_display_stderr_capture(self.cmd)
+        if self.stdout_control == DISPLAY and self.stderr_control == CAPTURE:
+            return run_stdout_display_stderr_capture(self.cmd)
 
-		if self.stdout_control == CAPTURE and self.stderr_control == DISPLAY:
-			return run_stdout_capture_stderr_display(self.cmd)
+        if self.stdout_control == CAPTURE and self.stderr_control == DISPLAY:
+            return run_stdout_capture_stderr_display(self.cmd)
 
-		if self.stdout_control == CAPTURE and self.stderr_control == CAPTURE:
-			run_stdout_capture_stderr_capture(self.cmd)
-			return
+        if self.stdout_control == CAPTURE and self.stderr_control == CAPTURE:
+            return run_stdout_capture_stderr_capture(self.cmd)
 
-		# display, append
-		if self.stdout_control == DISPLAY and self.stderr_control == APPEND_TO_FILE:
-			return run_stdout_display_stderr_append(self.cmd, self.stderr_filepath)
+        # display, append
+        if self.stdout_control == DISPLAY and self.stderr_control == APPEND_TO_FILE:
+            return run_stdout_display_stderr_append(self.cmd, self.stderr_filepath)
 
-		if self.stdout_control == APPEND_TO_FILE and self.stderr_control == DISPLAY:
-			return run_stdout_append_stderr_display(self.cmd, self.stdout_filepath)
+        if self.stdout_control == APPEND_TO_FILE and self.stderr_control == DISPLAY:
+            return run_stdout_append_stderr_display(self.cmd, self.stdout_filepath)
 
-		if self.stderr_control == APPEND_TO_FILE and self.stderr_control == APPEND_TO_FILE:
-			return run_stdout_append_stderr_append(self.cmd, self.stdout_filepath, self.stderr_filepath)
+        if self.stderr_control == APPEND_TO_FILE and self.stderr_control == APPEND_TO_FILE:
+            return run_stdout_append_stderr_append(self.cmd, self.stdout_filepath, self.stderr_filepath)
 
-		# display, overwrite
-		if self.stdout_control == DISPLAY and self.stderr_control == OVERWRITE_FILE:
-			return run_stdout_display_stderr_overwrite(self.cmd, self.stderr_filepath)
+        # display, overwrite
+        if self.stdout_control == DISPLAY and self.stderr_control == OVERWRITE_FILE:
+            return run_stdout_display_stderr_overwrite(self.cmd, self.stderr_filepath)
 
-		if self.stdout_control == OVERWRITE_FILE and self.stderr_control == DISPLAY:
-			return run_stdout_overwrite_stderr_display(self.cmd, self.stdout_filepath)
+        if self.stdout_control == OVERWRITE_FILE and self.stderr_control == DISPLAY:
+            return run_stdout_overwrite_stderr_display(self.cmd, self.stdout_filepath)
 
-		if self.stdout_control == OVERWRITE_FILE and self.stderr_control == OVERWRITE_FILE:
-			return run_stdout_overwrite_stderr_overwrite(self.cmd, self.stdout_filepath, self.stderr_filepath)
+        if self.stdout_control == OVERWRITE_FILE and self.stderr_control == OVERWRITE_FILE:
+            return run_stdout_overwrite_stderr_overwrite(self.cmd, self.stdout_filepath, self.stderr_filepath)
 
-		# capture, append
-		if self.stdout_control == CAPTURE and self.stderr_control == APPEND_TO_FILE:
-			return run_stdout_capture_stderr_append(self.cmd, self.stderr_filepath)
+        # capture, append
+        if self.stdout_control == CAPTURE and self.stderr_control == APPEND_TO_FILE:
+            return run_stdout_capture_stderr_append(self.cmd, self.stderr_filepath)
 
-		if self.stdout_control == APPEND_TO_FILE and self.stderr_control == CAPTURE:
-			return run_stdout_append_stderr_capture(self.cmd, self.stdout_filepath)
+        if self.stdout_control == APPEND_TO_FILE and self.stderr_control == CAPTURE:
+            return run_stdout_append_stderr_capture(self.cmd, self.stdout_filepath)
 
-		# capture, overwrite
-		if self.stdout_control == CAPTURE and self.stderr_control == OVERWRITE_FILE:
-			return run_stdout_capture_stderr_overwrite(self.cmd, self.stderr_filepath)
+        # capture, overwrite
+        if self.stdout_control == CAPTURE and self.stderr_control == OVERWRITE_FILE:
+            return run_stdout_capture_stderr_overwrite(self.cmd, self.stderr_filepath)
 
-		if self.stdout_control == OVERWRITE_FILE and self.stderr_control == CAPTURE:
-			return run_stdout_overwrite_stderr_capture(self.cmd, self.stdout_filepath)
+        if self.stdout_control == OVERWRITE_FILE and self.stderr_control == CAPTURE:
+            return run_stdout_overwrite_stderr_capture(self.cmd, self.stdout_filepath)
 
-		# display, ignore
-		if self.stdout_control == DISPLAY and self.stderr_control == IGNORE:
-			return run_stdout_display_stderr_ignore(self.cmd)
+        # display, ignore
+        if self.stdout_control == DISPLAY and self.stderr_control == IGNORE:
+            return run_stdout_display_stderr_ignore(self.cmd)
 
-		if self.stdout_control == IGNORE and self.stderr_control == DISPLAY:
-			return run_stdout_ignore_stderr_display(self.cmd)
+        if self.stdout_control == IGNORE and self.stderr_control == DISPLAY:
+            return run_stdout_ignore_stderr_display(self.cmd)
 
-		if self.stdout_control == IGNORE and self.stderr_control == IGNORE:
-			return run_stdout_ignore_stderr_ignore(self.cmd)
+        if self.stdout_control == IGNORE and self.stderr_control == IGNORE:
+            return run_stdout_ignore_stderr_ignore(self.cmd)
 
-		# capture, ignore
-		if self.stdout_control == CAPTURE and self.stderr_control == IGNORE:
-			return run_stdout_capture_stderr_ignore(self.cmd)
+        # capture, ignore
+        if self.stdout_control == CAPTURE and self.stderr_control == IGNORE:
+            return run_stdout_capture_stderr_ignore(self.cmd)
 
-		if self.stdout_control == IGNORE and self.stderr_control == CAPTURE:
-			return run_stdout_ignore_stderr_capture(self.cmd)
+        if self.stdout_control == IGNORE and self.stderr_control == CAPTURE:
+            return run_stdout_ignore_stderr_capture(self.cmd)
 
-		# append, ignore
-		if self.stdout_control == APPEND_TO_FILE and self.stderr_control == IGNORE:
-			return run_stdout_append_stderr_ignore(self.cmd, self.stdout_filepath)
+        # append, ignore
+        if self.stdout_control == APPEND_TO_FILE and self.stderr_control == IGNORE:
+            return run_stdout_append_stderr_ignore(self.cmd, self.stdout_filepath)
 
-		if self.stdout_control == IGNORE and self.stderr_control == APPEND_TO_FILE:
-			return run_stdout_ignore_stderr_append(self.cmd, self.stderr_filepath)
+        if self.stdout_control == IGNORE and self.stderr_control == APPEND_TO_FILE:
+            return run_stdout_ignore_stderr_append(self.cmd, self.stderr_filepath)
 
-		# overwrite, ignore
-		if self.stdout_control == OVERWRITE_FILE and stderr_control == IGNORE:
-			return run_stdout_overwrite_stderr_ignore(self.cmd, self.stdout_filepath)
+        # overwrite, ignore
+        if self.stdout_control == OVERWRITE_FILE and stderr_control == IGNORE:
+            return run_stdout_overwrite_stderr_ignore(self.cmd, self.stdout_filepath)
 
-		if self.stdout_control == IGNORE and self.stderr_control == OVERWRITE_FILE:
-			return run_stdout_ignore_stderr_overwrite(self.cmd, self.stderr_filepath)
+        if self.stdout_control == IGNORE and self.stderr_control == OVERWRITE_FILE:
+            return run_stdout_ignore_stderr_overwrite(self.cmd, self.stderr_filepath)
 
 
 if __name__ == '__main__':
