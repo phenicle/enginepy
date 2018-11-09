@@ -330,8 +330,7 @@ class Engine(object):
 
         return s
 
-
-	def run(self):
+    def run(self):
 
         if self.stdout_control == DISPLAY and self.stderr_control == DISPLAY:
             return run_stdout_display_stderr_display(self.cmd)
