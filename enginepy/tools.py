@@ -403,7 +403,7 @@ class Engine(object):
             return run_stdout_ignore_stderr_append(self.cmd, self.stderr_filepath)
 
         # overwrite, ignore
-        if self.stdout_control == OVERWRITE_FILE and stderr_control == IGNORE:
+        if self.stdout_control == OVERWRITE_FILE and self.stderr_control == IGNORE:
             return run_stdout_overwrite_stderr_ignore(self.cmd, self.stdout_filepath)
 
         if self.stdout_control == IGNORE and self.stderr_control == OVERWRITE_FILE:
