@@ -415,6 +415,7 @@ if __name__ == '__main__':
     print "capture/capture ->"
     result = Engine('ls -l', Engine.CAPTURE, Engine.CAPTURE).run()
     pp.pprint(result)
+    print 
 
     print "overwrite/overwrite ->"
     result = Engine('/usr/local/bin/stderrout.sh', Engine.OVERWRITE_FILE, Engine.OVERWRITE_FILE, stdout_filepath='/tmp/cmd.stdout', stderr_filepath='/tmp/cmd.stderr').run()
@@ -423,22 +424,27 @@ if __name__ == '__main__':
     print "cmd stderr ->"
     os.system('cat /tmp/cmd.stderr')
     pp.pprint(result)
+    print
 
     print "overwrite/capture ->"
     result = Engine('ls -l', Engine.OVERWRITE_FILE, Engine.CAPTURE, stdout_filepath='/tmp/cmd.stdout').run()
     print "cmd stdout ->"
     os.system('cat /tmp/cmd.stdout')
     pp.pprint(result)
+    print
 
     print "display/ignore ->"
     result = Engine('ls -l', Engine.DISPLAY, Engine.IGNORE).run()
     pp.pprint(result)
+    print
 
     print "ignore/ignore ->"
     result = Engine('ls -l', Engine.IGNORE, Engine.IGNORE).run()
+    print
 
     print "overwrite/ignore ->"
     result = Engine('ls -l', Engine.OVERWRITE, Engine.IGNORE, stdout_filepath='/tmp/cmd.stdout').run()
     print "cmd stdout ->"
     os.system('cat /tmp/cmd.stdout')
     pp.pprint(result)
+    print 
