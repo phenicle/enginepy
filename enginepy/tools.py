@@ -374,7 +374,7 @@ class Engine(object):
 		if self.stdout_control == CAPTURE and self.stderr_control == OVERWRITE_FILE:
 			return run_stdout_capture_stderr_overwrite(self.cmd, self.stderr_filepath)
 
-		if self.stdout_control == OVERWRITE_FILE and stderr_control == CAPTURE:
+		if self.stdout_control == OVERWRITE_FILE and self.stderr_control == CAPTURE:
 			return run_stdout_overwrite_stderr_capture(self.cmd, self.stdout_filepath)
 
 		# display, ignore
