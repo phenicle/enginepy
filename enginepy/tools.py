@@ -417,7 +417,7 @@ if __name__ == '__main__':
     pp.pprint(result)
 
     print "overwrite/overwrite ->"
-    result = Engine('ls -l', Engine.OVERWRITE_FILE, Engine.OVERWRITE_FILE, stdout_filepath='/tmp/cmd.stdout', stderr_filepath='/tmp/cmd.stderr').run()
+    result = Engine('/usr/local/bin/stderrout.sh', Engine.OVERWRITE_FILE, Engine.OVERWRITE_FILE, stdout_filepath='/tmp/cmd.stdout', stderr_filepath='/tmp/cmd.stderr').run()
     print "cmd stdout ->"
     os.system('cat /tmp/cmd.stdout')
     print "cmd stderr ->"
