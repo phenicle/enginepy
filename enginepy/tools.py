@@ -260,43 +260,43 @@ def run_stdout_ignore_stderr_overwrite(cmd, stderr_filepath):
 
 
 class Engine(object):
-	"""
-	A simple and powerful python API for running external commands.
+    """
+    A simple and powerful python API for running external commands.
 
-	Create an Engine object like this.
+    Create an Engine object like this.
 
-	e = Engine(cmd, stdout_control, stderr_control)
+    e = Engine(cmd, stdout_control, stderr_control)
 
-	or
+    or
 
-	e = Engine(cmd, stdout_control, stderr_control, stdout_filepath=FILEPATH)
+    e = Engine(cmd, stdout_control, stderr_control, stdout_filepath=FILEPATH)
 
-	or
+    or
 
-	e = Engine(cmd, stdout_control, stderr_control, stderr_filepath=FILEPATH)
+    e = Engine(cmd, stdout_control, stderr_control, stderr_filepath=FILEPATH)
 
-	or
+    or
 
-	e = Engine(cmd, stdout_control, stderr_control, stdout_filepath=FILEPATH, stderr_filepath=FILEPATH)
+    e = Engine(cmd, stdout_control, stderr_control, stdout_filepath=FILEPATH, stderr_filepath=FILEPATH)
 
-	where stdout_control and stderr_control are one of these:
+    where stdout_control and stderr_control are one of these:
 
-	DISPLAY
-	CAPTURE
-	IGNORE
-	APPEND_TO_FILE
-	OVERWRITE_FILE
+    DISPLAY
+    CAPTURE
+    IGNORE
+    APPEND_TO_FILE
+    OVERWRITE_FILE
 
-	Run the command in the desired manner like this:
+    Run the command in the desired manner like this:
 
-	e.run()
+    e.run()
 
-	In every case, the result is a dictionary that contains a 'code' property,
-	the value of which is the command's return code.
+    In every case, the result is a dictionary that contains a 'code' property,
+    the value of which is the command's return code.
 
-	If CAPTURE is specified, the result dictionary contains a FILE
-	property, where FILE is either 'stdout' or 'stderr'.
-	"""
+    If CAPTURE is specified, the result dictionary contains a FILE
+    property, where FILE is either 'stdout' or 'stderr'.
+    """
 
     UNKNOWN = 0
     DISPLAY = 1
