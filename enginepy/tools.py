@@ -29,33 +29,33 @@ def run_stdout_capture_stderr_display(cmd):
 # result = Engine('ls -l', Engine.CAPTURE, Engine.CAPTURE).run()
 def run_stdout_capture_stderr_capture(cmd):
 
-        return_code = -1
-        stderr = ""
-        try:
-                PIPE = subprocess.PIPE
-                # note: with shell=False, need to resolve binary to explicit path
-                # delegating to the shell lets it locate it in PATH
-                proc = subprocess.Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
-                stdout, stderr = proc.communicate()
+    return_code = -1
+    stderr = ""
+    try:
+        PIPE = subprocess.PIPE
+        # note: with shell=False, need to resolve binary to explicit path
+        # delegating to the shell lets it locate it in PATH
+        proc = subprocess.Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
+        stdout, stderr = proc.communicate()
 
-                # Wait until process terminates (without using p.wait())
-                while proc.poll() is None:
-                    # Process hasn't exited yet, let's wait some
-                    time.sleep(0.5)
+        # Wait until process terminates (without using p.wait())
+        while proc.poll() is None:
+            # Process hasn't exited yet, let's wait some
+            time.sleep(0.5)
 
-                # Get return code from process
-                return_code = proc.returncode
-                if DEBUGGING:
-                        print "return code: {}".format(str(return_code))
-                        print "stderr =>"
-                        pp.pprint(stderr)
+        # Get return code from process
+        return_code = proc.returncode
+        if DEBUGGING:
+            print "return code: {}".format(str(return_code))
+            print "stderr =>"
+            pp.pprint(stderr)
 
-        except Exception, e:
-                print "exception: {}".format(str(e))
-                if DEBUGGING:
-                        sys.exit(1)
+    except Exception, e:
+        print "exception: {}".format(str(e))
+        if DEBUGGING:
+            sys.exit(1)
 
-        return { 'code': return_code, 'stdout': stdout, 'stderr': stderr }
+    return { 'code': return_code, 'stdout': stdout, 'stderr': stderr }
 
 def run_stdout_display_stderr_append(cmd, stderr_filepath):
 	pass
@@ -75,32 +75,32 @@ def run_stdout_overwrite_stderr_display(cmd, stdout_filepath):
 # result = Engine('ls -l', Engine.OVERWRITE_FILE, Engine.OVERWRITE_FILE, stdout_filepath='/tmp/cmd.stdout', stderr_filepath='/tmp/cmd.stderr').run()
 def run_stdout_overwrite_stderr_overwrite(cmd, stdout_filepath, stderr_filepath):
 
-        return_code = -1
-        try:
-                PIPE = subprocess.PIPE
-                # note: with shell=False, need to resolve binary to explicit path
-                # delegating to the shell lets it locate it in PATH
-                proc = subprocess.Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
-                with open(stdout_filepath, 'w') as stdout, open(os.devnull, 'w') as stderr:
-                        stderr, stdout = proc.communicate()
+    return_code = -1
+    try:
+        PIPE = subprocess.PIPE
+        # note: with shell=False, need to resolve binary to explicit path
+        # delegating to the shell lets it locate it in PATH
+        proc = subprocess.Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
+        with open(stdout_filepath, 'w') as stdout, open(os.devnull, 'w') as stderr:
+            stderr, stdout = proc.communicate()
 
-                # Wait until process terminates (without using p.wait())
-                while proc.poll() is None:
-                    # Process hasn't exited yet, let's wait some
-                    time.sleep(0.5)
+        # Wait until process terminates (without using p.wait())
+        while proc.poll() is None:
+            # Process hasn't exited yet, let's wait some
+            time.sleep(0.5)
 
-                # Get return code from process
-                return_code = proc.returncode
-                if DEBUGGING:
-                        print "return code: {}".format(str(return_code))
-                        print "ignoring stderr"
+        # Get return code from process
+        return_code = proc.returncode
+        if DEBUGGING:
+            print "return code: {}".format(str(return_code))
+            print "ignoring stderr"
 
-        except Exception, e:
-                print "exception: {}".format(str(e))
-                if DEBUGGING:
-                        sys.exit(1)
+    except Exception, e:
+        print "exception: {}".format(str(e))
+        if DEBUGGING:
+            sys.exit(1)
 
-        return { 'code': return_code }
+    return { 'code': return_code }
 
 def run_stdout_capture_stderr_append(cmd, stderr_filepath):
 	pass
@@ -114,68 +114,68 @@ def run_stdout_capture_stderr_overwrite(cmd, stderr_filepath):
 # result = Engine('ls -l', Engine.OVERWRITE_FILE, Engine.CAPTURE, stdout_filepath='/tmp/cmd.stdout').run()
 def run_stdout_overwrite_stderr_capture(cmd, stdout_filepath):
 
-        return_code = -1
-        stderr = ""
-        try:
-                PIPE = subprocess.PIPE
-                # note: with shell=False, need to resolve binary to explicit path
-                # delegating to the shell lets it locate it in PATH
-                proc = subprocess.Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
-                with open(stdout_filepath, 'w') as stdout:
-                        stdout, stderr = proc.communicate()
+    return_code = -1
+    stderr = ""
+    try:
+        PIPE = subprocess.PIPE
+        # note: with shell=False, need to resolve binary to explicit path
+        # delegating to the shell lets it locate it in PATH
+        proc = subprocess.Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
+        with open(stdout_filepath, 'w') as stdout:
+            stdout, stderr = proc.communicate()
 
-                # Wait until process terminates (without using p.wait())
-                while proc.poll() is None:
-                    # Process hasn't exited yet, let's wait some
-                    time.sleep(0.5)
+        # Wait until process terminates (without using p.wait())
+        while proc.poll() is None:
+            # Process hasn't exited yet, let's wait some
+            time.sleep(0.5)
 
-                # Get return code from process
-                return_code = proc.returncode
-                if DEBUGGING:
-                        print "return code: {}".format(str(return_code))
-                        print "stderr =>"
-                        pp.pprint(stderr)
+        # Get return code from process
+        return_code = proc.returncode
+        if DEBUGGING:
+            print "return code: {}".format(str(return_code))
+            print "stderr =>"
+            pp.pprint(stderr)
 
-        except Exception, e:
-                print "exception: {}".format(str(e))
-                if DEBUGGING:
-                        sys.exit(1)
+    except Exception, e:
+        print "exception: {}".format(str(e))
+        if DEBUGGING:
+            sys.exit(1)
 
-        return { 'code': return_code, 'stderr': stderr }
+    return { 'code': return_code, 'stderr': stderr }
 
 
 # result = Engine('ls -l', Engine.DISPLAY, Engine.IGNORE).run()
 def run_stdout_display_stderr_ignore(cmd):
 
-        return_code = -1
-        stderr = ""
-        try:
-                PIPE = subprocess.PIPE
-                # note: with shell=False, need to resolve binary to explicit path
-                # delegating to the shell lets it locate it in PATH
-                proc = subprocess.Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
-                stdout, stderr = proc.communicate()
+    return_code = -1
+    stderr = ""
+    try:
+        PIPE = subprocess.PIPE
+        # note: with shell=False, need to resolve binary to explicit path
+        # delegating to the shell lets it locate it in PATH
+        proc = subprocess.Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
+        stdout, stderr = proc.communicate()
 
-                # Wait until process terminates (without using p.wait())
-                while proc.poll() is None:
-                    # Process hasn't exited yet, let's wait some
-                    time.sleep(0.5)
+        # Wait until process terminates (without using p.wait())
+        while proc.poll() is None:
+            # Process hasn't exited yet, let's wait some
+            time.sleep(0.5)
 
-                # Get return code from process
-                return_code = proc.returncode
-                if DEBUGGING:
-                        print "return code: {}".format(str(return_code))
-                        print "stderr =>"
-                        pp.pprint(stderr)
+        # Get return code from process
+        return_code = proc.returncode
+        if DEBUGGING:
+            print "return code: {}".format(str(return_code))
+            print "stderr =>"
+            pp.pprint(stderr)
 
-                print stdout
+        print stdout
 
-        except Exception, e:
-                print "exception: {}".format(str(e))
-                if DEBUGGING:
-                        sys.exit(1)
+    except Exception, e:
+        print "exception: {}".format(str(e))
+        if DEBUGGING:
+            sys.exit(1)
 
-        return { 'code': return_code }
+    return { 'code': return_code }
 
 
 def run_stdout_ignore_stderr_display(cmd):
@@ -185,32 +185,32 @@ def run_stdout_ignore_stderr_display(cmd):
 # result = Engine('ls -l', Engine.IGNORE, Engine.IGNORE).run()
 def run_stdout_ignore_stderr_ignore(cmd):
 
-        return_code = -1
-        try:
-                PIPE = subprocess.PIPE
-                # note: with shell=False, need to resolve binary to explicit path
-                # delegating to the shell lets it locate it in PATH
-                proc = subprocess.Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
-                with open(os.devnull, 'w') as devnull:
-                        devnull, devnull = proc.communicate()
+    return_code = -1
+    try:
+        PIPE = subprocess.PIPE
+        # note: with shell=False, need to resolve binary to explicit path
+        # delegating to the shell lets it locate it in PATH
+        proc = subprocess.Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
+        with open(os.devnull, 'w') as devnull:
+            devnull, devnull = proc.communicate()
 
-                # Wait until process terminates (without using p.wait())
-                while proc.poll() is None:
-                    # Process hasn't exited yet, let's wait some
-                    time.sleep(0.5)
+        # Wait until process terminates (without using p.wait())
+        while proc.poll() is None:
+            # Process hasn't exited yet, let's wait some
+            time.sleep(0.5)
 
-                # Get return code from process
-                return_code = proc.returncode
-                if DEBUGGING:
-                        print "return code: {}".format(str(return_code))
-                        print "ignoring stderr"
+        # Get return code from process
+        return_code = proc.returncode
+        if DEBUGGING:
+            print "return code: {}".format(str(return_code))
+            print "ignoring stderr"
 
-        except Exception, e:
-                print "exception: {}".format(str(e))
-                if DEBUGGING:
-                        sys.exit(1)
+    except Exception, e:
+        print "exception: {}".format(str(e))
+        if DEBUGGING:
+            sys.exit(1)
 
-        return { 'code': return_code }
+    return { 'code': return_code }
 
 def run_stdout_capture_stderr_ignore(cmd):
 	pass
@@ -227,32 +227,32 @@ def run_stdout_ignore_stderr_append(cmd, stderr_filepath):
 # result = Engine('ls -l', Engine.OVERWRITE, Engine.IGNORE, stdout_filepath=/tmp/cmd.stdout).run()
 def run_stdout_overwrite_stderr_ignore(cmd, stdout_filepath):
 
-        return_code = -1
-        try:
-                PIPE = subprocess.PIPE
-                # note: with shell=False, need to resolve binary to explicit path
-                # delegating to the shell lets it locate it in PATH
-                proc = subprocess.Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
-                with open(stdout_filepath, 'w') as f, open(os.devnull, 'w') as devnull:
-                        f, devnull = proc.communicate()
+    return_code = -1
+    try:
+        PIPE = subprocess.PIPE
+        # note: with shell=False, need to resolve binary to explicit path
+        # delegating to the shell lets it locate it in PATH
+        proc = subprocess.Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
+        with open(stdout_filepath, 'w') as f, open(os.devnull, 'w') as devnull:
+            f, devnull = proc.communicate()
 
-                # Wait until process terminates (without using p.wait())
-                while proc.poll() is None:
-                    # Process hasn't exited yet, let's wait some
-                    time.sleep(0.5)
+        # Wait until process terminates (without using p.wait())
+        while proc.poll() is None:
+            # Process hasn't exited yet, let's wait some
+            time.sleep(0.5)
 
-                # Get return code from process
-                return_code = proc.returncode
-                if DEBUGGING:
-                        print "return code: {}".format(str(return_code))
-                        print "ignoring stderr"
+        # Get return code from process
+        return_code = proc.returncode
+        if DEBUGGING:
+            print "return code: {}".format(str(return_code))
+            print "ignoring stderr"
 
-        except Exception, e:
-                print "exception: {}".format(str(e))
-                if DEBUGGING:
-                        sys.exit(1)
+    except Exception, e:
+        print "exception: {}".format(str(e))
+        if DEBUGGING:
+            sys.exit(1)
 
-        return { 'code': return_code }
+    return { 'code': return_code }
 
 
 def run_stdout_ignore_stderr_overwrite(cmd, stderr_filepath):
@@ -322,13 +322,13 @@ class Engine(object):
             self.stderr_filepath = kwargs['stderr_filepath']
 
 
-        def __repr__(self):
+    def __repr__(self):
 
-            s = '\n'
-            for k in self.__dict__:
-                    s += "%5s%20s: %s\n" % (' ',k, self.__dict__[k])
+        s = '\n'
+        for k in self.__dict__:
+                s += "%5s%20s: %s\n" % (' ',k, self.__dict__[k])
 
-            return s
+        return s
 
 
 	def run(self):
