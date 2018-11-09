@@ -302,10 +302,10 @@ class Engine(object):
 	DISPLAY = 1
 	CAPTURE = 2
 	IGNORE  = 3
-    APPEND = 4
-	APPEND_TO_FILE = 4
+    APPEND  = 4
+    APPEND_TO_FILE = 4
     OVERWRITE = 5
-	OVERWRITE_FILE = 5
+    OVERWRITE_FILE = 5
 
 	def __init__(self, cmd, stdout_control, stderr_control, **kwargs):
 
