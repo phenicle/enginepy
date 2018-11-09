@@ -306,7 +306,7 @@ class Engine(object):
     APPEND_TO_FILE = 4
     OVERWRITE = 5
     OVERWRITE_FILE = 5
-    
+
     def __init__(self, cmd, stdout_control, stderr_control, **kwargs):
 
         self.cmd = cmd
@@ -316,19 +316,19 @@ class Engine(object):
         self.stdout_filepath = None
         self.stderr_filepath = None
         if 'stdout_filepath' in kwargs:
-        	self.stdout_filepath = kwargs['stdout_filepath']
+            self.stdout_filepath = kwargs['stdout_filepath']
 
         if 'stderr_filepath' in kwargs:
-        	self.stderr_filepath = kwargs['stderr_filepath']
+            self.stderr_filepath = kwargs['stderr_filepath']
 
 
         def __repr__(self):
 
-        	s = '\n'
-        	for k in self.__dict__:
-        	        s += "%5s%20s: %s\n" % (' ',k, self.__dict__[k])
+            s = '\n'
+            for k in self.__dict__:
+                    s += "%5s%20s: %s\n" % (' ',k, self.__dict__[k])
 
-        	return s
+            return s
 
 
 	def run(self):
