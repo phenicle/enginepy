@@ -93,7 +93,6 @@ def run_stdout_overwrite_stderr_overwrite(cmd, stdout_filepath, stderr_filepath)
         return_code = proc.returncode
         if DEBUGGING:
             print "return code: {}".format(str(return_code))
-            print "ignoring stderr"
 
     except Exception, e:
         print "exception: {}".format(str(e))
