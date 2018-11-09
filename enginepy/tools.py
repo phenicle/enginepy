@@ -298,10 +298,10 @@ class Engine(object):
 	property, where FILE is either 'stdout' or 'stderr'.
 	"""
 
-	UNKNOWN = 0
-	DISPLAY = 1
-	CAPTURE = 2
-	IGNORE  = 3
+    UNKNOWN = 0
+    DISPLAY = 1
+    CAPTURE = 2
+    IGNORE  = 3
     APPEND  = 4
     APPEND_TO_FILE = 4
     OVERWRITE = 5
