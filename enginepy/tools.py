@@ -411,6 +411,7 @@ class Engine(object):
 
 if __name__ == '__main__':
 
+    print
     print "capture/capture ->"
     result = Engine('ls -l', Engine.CAPTURE, Engine.CAPTURE).run()
     pp.pprint(result)
