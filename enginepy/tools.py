@@ -82,7 +82,7 @@ def run_stdout_overwrite_stderr_overwrite(cmd, stdout_filepath, stderr_filepath)
         # delegating to the shell lets it locate it in PATH
         proc = subprocess.Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
         with open(stdout_filepath, 'w') as stdout, open(stderr_filepath, 'w') as stderr:
-            stderr, stdout = proc.communicate()
+            stdout, stderr = proc.communicate()
 
         # Wait until process terminates (without using p.wait())
         while proc.poll() is None:
