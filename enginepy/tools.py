@@ -77,12 +77,10 @@ def run_stdout_overwrite_stderr_overwrite(cmd, stdout_filepath, stderr_filepath)
 
     return_code = -1
     try:
-        PIPE = subprocess.PIPE
         # note: with shell=False, need to resolve binary to explicit path
         # delegating to the shell lets it locate it in PATH
-        proc = subprocess.Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
-        with open(stdout_filepath, 'w') as stdout, open(stderr_filepath, 'w') as stderr:
-            stdout, stderr = proc.communicate()
+        with open(stdout_filepath, 'w') as outfile, open(stderr_filepath, 'w') as errfile:
+            proc = subprocess.Popen(cmd, shell=True, stdout=outfile, stderr=errfile)
 
         # Wait until process terminates (without using p.wait())
         while proc.poll() is None:
