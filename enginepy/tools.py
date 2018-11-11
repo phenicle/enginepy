@@ -232,8 +232,8 @@ def run_stdout_overwrite_stderr_ignore(cmd, stdout_filepath):
         # delegating to the shell lets it locate it in PATH
         #with open(stdout_filepath, 'w') as outfile, open(stderr_filepath, 'w') as errfile:
         with open(stdout_filepath, 'w') as outfile, open(os.devnull, 'w') as devnull:
-            #proc = subprocess.Popen(cmd, shell=True, stdout=outfile, stderr=errfile)
-            outfile, devnull = proc.communicate()
+            proc = subprocess.Popen(cmd, shell=True, stdout=outfile, stderr=devnull)
+            #outfile, devnull = proc.communicate()
 
         # Wait until process terminates (without using p.wait())
         while proc.poll() is None:
