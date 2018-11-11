@@ -228,12 +228,12 @@ def run_stdout_overwrite_stderr_ignore(cmd, stdout_filepath):
 
     return_code = -1
     try:
-        PIPE = subprocess.PIPE
         # note: with shell=False, need to resolve binary to explicit path
         # delegating to the shell lets it locate it in PATH
-        proc = subprocess.Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
-        with open(stdout_filepath, 'w') as f, open(os.devnull, 'w') as devnull:
-            f, devnull = proc.communicate()
+        #with open(stdout_filepath, 'w') as outfile, open(stderr_filepath, 'w') as errfile:
+        with open(stdout_filepath, 'w') as outfile, open(os.devnull, 'w') as devnull:
+            #proc = subprocess.Popen(cmd, shell=True, stdout=outfile, stderr=errfile)
+            outfile, devnull = proc.communicate()
 
         # Wait until process terminates (without using p.wait())
         while proc.poll() is None:
@@ -244,7 +244,6 @@ def run_stdout_overwrite_stderr_ignore(cmd, stdout_filepath):
         return_code = proc.returncode
         if DEBUGGING:
             print "return code: {}".format(str(return_code))
-            print "ignoring stderr"
 
     except Exception, e:
         print "exception: {}".format(str(e))
@@ -438,47 +437,47 @@ if __name__ == '__main__':
     pp.pprint(result)
     print
 
-#    print "overwrite/capture ->"
-#
-#    result = Engine(
-#        'ls -l', 
-#        Engine.OVERWRITE_FILE, 
-#        Engine.CAPTURE, 
-#        stdout_filepath='/tmp/cmd.stdout').run()
-#
-#    print "cmd stdout ->"
-#    os.system('cat /tmp/cmd.stdout')
-#    pp.pprint(result)
-#    print
-#
-#    print "display/ignore ->"
-#
-#    result = Engine(
-#        'ls -l', 
-#        Engine.DISPLAY, 
-#        Engine.IGNORE).run()
-#
-#    pp.pprint(result)
-#    print
-#
-#    print "ignore/ignore ->"
-#
-#    result = Engine(
-#        'ls -l', 
-#        Engine.IGNORE, 
-#        Engine.IGNORE).run()
-#
-#    print
-#
-#    print "overwrite/ignore ->"
-#
-#    result = Engine(
-#        'ls -l', 
-#        Engine.OVERWRITE, 
-#        Engine.IGNORE, 
-#        stdout_filepath='/tmp/cmd.stdout').run()
-#
-#    print "cmd stdout ->"
-#    os.system('cat /tmp/cmd.stdout')
-#    pp.pprint(result)
-#    print
+    print "overwrite/capture ->"
+
+    result = Engine(
+        'ls -l', 
+        Engine.OVERWRITE_FILE, 
+        Engine.CAPTURE, 
+        stdout_filepath='/tmp/cmd.stdout').run()
+
+    print "cmd stdout ->"
+    os.system('cat /tmp/cmd.stdout')
+    pp.pprint(result)
+    print
+
+    print "display/ignore ->"
+
+    result = Engine(
+        'ls -l', 
+        Engine.DISPLAY, 
+        Engine.IGNORE).run()
+
+    pp.pprint(result)
+    print
+
+    print "ignore/ignore ->"
+
+    result = Engine(
+        'ls -l', 
+        Engine.IGNORE, 
+        Engine.IGNORE).run()
+
+    print
+
+    print "overwrite/ignore ->"
+
+    result = Engine(
+        'ls -l', 
+        Engine.OVERWRITE, 
+        Engine.IGNORE, 
+        stdout_filepath='/tmp/cmd.stdout').run()
+
+    print "cmd stdout ->"
+    os.system('cat /tmp/cmd.stdout')
+    pp.pprint(result)
+    print
