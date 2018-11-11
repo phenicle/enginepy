@@ -438,47 +438,47 @@ if __name__ == '__main__':
     pp.pprint(result)
     print
 
-    print "overwrite/capture ->"
-
-    result = Engine(
-        'ls -l', 
-        Engine.OVERWRITE_FILE, 
-        Engine.CAPTURE, 
-        stdout_filepath='/tmp/cmd.stdout').run()
-
-    print "cmd stdout ->"
-    os.system('cat /tmp/cmd.stdout')
-    pp.pprint(result)
-    print
-
-    print "display/ignore ->"
-
-    result = Engine(
-        'ls -l', 
-        Engine.DISPLAY, 
-        Engine.IGNORE).run()
-
-    pp.pprint(result)
-    print
-
-    print "ignore/ignore ->"
-
-    result = Engine(
-        'ls -l', 
-        Engine.IGNORE, 
-        Engine.IGNORE).run()
-
-    print
-
-    print "overwrite/ignore ->"
-
-    result = Engine(
-        'ls -l', 
-        Engine.OVERWRITE, 
-        Engine.IGNORE, 
-        stdout_filepath='/tmp/cmd.stdout').run()
-
-    print "cmd stdout ->"
-    os.system('cat /tmp/cmd.stdout')
-    pp.pprint(result)
-    print
+#    print "overwrite/capture ->"
+#
+#    result = Engine(
+#        'ls -l', 
+#        Engine.OVERWRITE_FILE, 
+#        Engine.CAPTURE, 
+#        stdout_filepath='/tmp/cmd.stdout').run()
+#
+#    print "cmd stdout ->"
+#    os.system('cat /tmp/cmd.stdout')
+#    pp.pprint(result)
+#    print
+#
+#    print "display/ignore ->"
+#
+#    result = Engine(
+#        'ls -l', 
+#        Engine.DISPLAY, 
+#        Engine.IGNORE).run()
+#
+#    pp.pprint(result)
+#    print
+#
+#    print "ignore/ignore ->"
+#
+#    result = Engine(
+#        'ls -l', 
+#        Engine.IGNORE, 
+#        Engine.IGNORE).run()
+#
+#    print
+#
+#    print "overwrite/ignore ->"
+#
+#    result = Engine(
+#        'ls -l', 
+#        Engine.OVERWRITE, 
+#        Engine.IGNORE, 
+#        stdout_filepath='/tmp/cmd.stdout').run()
+#
+#    print "cmd stdout ->"
+#    os.system('cat /tmp/cmd.stdout')
+#    pp.pprint(result)
+#    print
