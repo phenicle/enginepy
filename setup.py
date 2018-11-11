@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
    name='enginepy',
-   version='1.0.2',
+   version='1.0.3',
    description='A simple and powerful python API for running external commands.',
    license="Mozilla Public License 2.0 (MPL 2.0)",
    long_description='A simple and powerful python API for external commands. Arguments toggle the behavior of STDOUT and STDERR. The return code is always available.',
